@@ -1,0 +1,47 @@
+https://docs.docker.com/docker-for-windows/
+1.	click on docker desktop 
+2.	Open cmd as administrator
+Launch command: "C:\Program Files\Docker\Docker\DockerCli.exe" –SwitchDaemon
+3.	Create a Docker image file. The below command is used to create the image file.
+docker build -t docker-service-registry.jar .
+
+docker build -t anushkhathakur/fsd-repository:v1 .
+docker push anushkhathakur/fsd-repository:v1
+ .
+4.	Go to the file location where your docker file is placed in spring boot application
+5.	You can check the created image by using the "docker images" command.
+6.	To push to a Docker registry, you need to have permission to push, which you do not have by default. 
+Change the image prefix to your own Dockerhub ID and docker login to make sure you are authenticated before you run Docker.
+7.You can push a new image to this repository using the CLI,Make sure to change tagname with your desired image repository tag.
+docker tag local-image:tagname new-repo:tagname
+docker push new-repo:tagname
+
+docker tag docker-service-registry.jar:latest anushkhathakur/fsd-repository:latest
+docker push anushkhathakur/fsd-repository:latest
+8.Now, our image file is ready. We can push this image to Docker by using the below command. 
+docker run -p 8761:8761 -t docker-service-registry.jar
+9.Run docker build -t <your_username>/my-private-repo . to build your Docker image.
+•  Run docker run <your_username>/my-private-repo to test your Docker image locally.
+•  Run docker push <your_username>/my-private-repo to push your Docker image to Docker Hub. 
+
+10. To remove image from local-image
+docker images
+docker rmi -f <image Id>
+
+//To dockerize the angular
+ng build
+ng build --prod
+1. open command prompt as administrator and traveres till your folder
+"C:\Program Files\Docker\Docker\DockerCli.exe" –SwitchDaemon
+docker build -t pixogram-ui-image .
+2. you will face error 
+Docker: “no matching manifest for windows/amd64 in the manifest list entries”
+In Docker:
+1.	go to Settings
+2.	go to Docker Engine
+3.	change experimental to true
+4.	press Apply and Restart
+
+
+
+
